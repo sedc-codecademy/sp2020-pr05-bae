@@ -1,3 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+}
 .hide {
   display: none;
+}
+
+.quiz {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.current-question {
+  height: 80%;
+  width: 80%;
+  background-color: wheat;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.question {
+  width: 60%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+}
+.question > p {
+  font-size: 40px;
+  text-align: center;
+}
+.answers {
+  width: 80%;
+  height: 40%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.answer {
+  width: 22%;
+}
+.answer > img {
+  width: 100%;
+}
+.answer > p {
+  font-size: 20px;
+  text-align: center;
 }
