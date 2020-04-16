@@ -1,3 +1,62 @@
 .hide {
   display: none;
 }
+
+.single-cocktail{
+   display: flex;
+  flex-wrap: wrap; 
+   justify-content : center; 
+  /* width: 80%;
+  margin: 0px auto; 
+  margin: 0;
+  padding: 0; */
+}
+#singleCard{
+  height: 100vh;
+ 
+}
+#topCard{
+  height: 50%;
+  background-color: yellow;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+#topCard img{
+  height: 600px;
+  position: relative;
+  top: 150px;
+  right: 50px;
+}
+#topCard h1{
+font-size: 60px;
+color: blue;
+position: relative;
+right: 260px;
+}
+#topCard ul{
+  position: relative;
+  right: 270px;
+
+}
+#topCard li{
+  display: inline;
+  color: blue;
+  margin-right: 30px;
+  font-size: 26px;
+  list-style-type: circle;
+}
+#botCard{
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#botCard hr{
+  width: 5%;
+  
+}
+
