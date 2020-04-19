@@ -21,17 +21,7 @@ function getAnswerObjects(drinks) {
   }
   return result;
 }
-class Ingredient {
-  name;
-  amount;
-  constructor(name, amount) {
-    this.name = name;
-    this.amount = amount;
-  }
-  getString() {
-    return `${this.amount ? this.amount + ' of ' : ' '} ${this.name}`;
-  }
-}
+
 class Answer {
   name;
   imgUrl;
@@ -46,23 +36,16 @@ class Answer {
   getIngredients(fullDrink) {
     let i = 0;
     while (fullDrink[`strIngredient${++i}`])
-      this.ingredients.push(
-        new Ingredient(
-          fullDrink[`strIngredient${i}`],
-          fullDrink[`strMeasure${i}`]
-        )
-      );
+      this.ingredients.push(fullDrink[`strIngredient${i}`]);
   }
   getQuestion() {
     result = `this cocktail is made from `;
     for (let i = 0; i < this.ingredients.length - 1; i++)
       result =
         result +
-        this.ingredients[i].getString() +
+        this.ingredients[i] +
         (i == this.ingredients.length - 2 ? ' and ' : ', ');
-    return `${result}${this.ingredients[
-      this.ingredients.length - 1
-    ].getString()}?`;
+    return `${result}${this.ingredients[this.ingredients.length - 1]}?`;
   }
 }
 
@@ -85,19 +68,31 @@ class Question {
     let container = document.querySelector('.answers');
     container.innerHTML = '';
     for (let i = 0; i < 4; i++) {
+      if (this.allAnswers[i].isCorrect) {
+        let bigContainer = document.querySelector('.current-question');
+        bigContainer.style.backgroundImage = `url(${this.allAnswers[i].imgUrl})`;
+      }
       let div = document.createElement('div');
       div.classList.add('answer');
-      let img = document.createElement('img');
-      img.src = this.allAnswers[i].imgUrl;
+      // let img = document.createElement('img');
+      // img.src = this.allAnswers[i].imgUrl;
       let p = document.createElement('p');
       p.innerText = this.allAnswers[i].name;
-      div.appendChild(img);
+      // div.appendChild(img);
       div.appendChild(p);
       container.appendChild(div);
       div.addEventListener('click', async () => {
-        quiz.correctAnswers += i == this.correctAnswer ? 1 : 0;
+        if (this.allAnswers[i].isCorrect) {
+          quiz.correctAnswers += 1;
+          div.style.backgroundColor = 'green';
+        } else {
+          div.style.backgroundColor = 'red';
+        }
         console.log(quiz.correctAnswers);
-        quiz.moveToNextQuestion();
+        setTimeout(() => {
+          quiz.moveToNextQuestion();
+        }, 200);
+        // quiz.moveToNextQuestion();
       });
     }
   }
@@ -124,8 +119,8 @@ class Quiz {
   }
   async init() {
     await this.setCurrent();
-    await this.setNext();
     this.currentQuestion.show(this);
+    await this.setNext();
   }
   async moveToNextQuestion() {
     this.currentQuestion = this.nextQuestion;
