@@ -84,15 +84,15 @@ class Question {
       div.addEventListener('click', async () => {
         if (this.allAnswers[i].isCorrect) {
           quiz.correctAnswers += 1;
-          div.style.backgroundColor = 'green';
+          div.style.backgroundColor = `#4BB543`;
         } else {
-          div.style.backgroundColor = 'red';
+          div.style.backgroundColor = '#dc3545';
         }
         console.log(quiz.correctAnswers);
         setTimeout(() => {
-          quiz.moveToNextQuestion();
+          if (quiz.questionNo != 10) quiz.moveToNextQuestion();
+          else quiz.endGame();
         }, 200);
-        // quiz.moveToNextQuestion();
       });
     }
   }
@@ -100,9 +100,11 @@ class Question {
 
 class Quiz {
   currentQuestion;
+  questionNo;
   nextQuestion;
   correctAnswers;
   constructor() {
+    this.questionNo = 1;
     this.correctAnswers = 0;
   }
   async getQuestion() {
@@ -125,7 +127,12 @@ class Quiz {
   async moveToNextQuestion() {
     this.currentQuestion = this.nextQuestion;
     await this.currentQuestion.show(this);
+    this.questionNo++;
     this.setNext();
+  }
+  async endGame() {
+    let div = document.querySelector('.quiz');
+    div.innerHTML = `<h1>tocni odgovori ${this.correctAnswers}</h1>`; //Za Sreduvanje
   }
 }
 let quiz = new Quiz();

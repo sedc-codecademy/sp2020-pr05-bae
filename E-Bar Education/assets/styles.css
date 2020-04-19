@@ -17,7 +17,7 @@
 .current-question {
   position: relative;
   overflow: hidden;
-  height: 95%;
+  height: 100%;
   width: 60%;
   display: flex;
   flex-wrap: wrap;
@@ -52,11 +52,12 @@
 }
 .answers {
   z-index: 2;
-  width: 80%;
+  width: 90%;
   height: 20%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  margin-bottom: 100px;
 }
 .answer {
   border: 1px solid black;
@@ -77,4 +78,37 @@
 .answer > p {
   font-size: 30px;
   text-align: center;
+}
+@media screen and (max-width: 1200px) {
+  .current-question {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .answers {
+    height: 40%;
+  }
+  .question {
+    height: 45%;
+  }
+  .answer {
+    width: 80%;
+  }
+  .current-question {
+    background-position: center;
+  }
+}
+@media screen and (max-width: 600px) {
+  .answers {
+    width: 100%;
+  }
+  .question {
+    height: 30%;
+  }
+  .question > p {
+    font-size: 30px;
+  }
+  .answer > p {
+    font-size: 23px;
+  }
 }
