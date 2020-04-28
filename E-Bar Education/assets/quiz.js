@@ -92,7 +92,7 @@ class Question {
         setTimeout(() => {
           if (quiz.questionNo != 10) quiz.moveToNextQuestion();
           else quiz.endGame();
-        }, 200);
+        }, 50);
       });
     }
   }
@@ -137,6 +137,18 @@ class Quiz {
 }
 let quiz = new Quiz();
 quiz.init();
-setTimeout(() => {
-  console.log(quiz);
-}, 5000);
+// async function counter(by) {
+//   let result = [];
+//   for (let i = 0; i < 2000; i++) {
+//     let current = await fetch(startUrl + 'random.php');
+//     current = await current.json();
+//     result.push(current.drinks[0][by]);
+//     console.log(i);
+//   }
+//   result.sort();
+//   result = await result.filter(
+//     (value, index, self) => self.indexOf(value) === index
+//   );
+//   console.log(result);
+// }
+// counter(`strCategory`);
