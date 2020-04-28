@@ -1,62 +1,194 @@
+@font-face {
+  font-family: roundor;
+  src: url("../Fonts/RoundorNonCommercial.otf");
+}
+body{
+  margin: 0;
+}
 .hide {
   display: none;
 }
-
 .single-cocktail{
    display: flex;
   flex-wrap: wrap; 
    justify-content : center; 
-  /* width: 80%;
-  margin: 0px auto; 
-  margin: 0;
-  padding: 0; */
 }
+
 #singleCard{
   height: 100vh;
- 
+  font-family: roundor;
 }
 #topCard{
   height: 50%;
-  background-color: yellow;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-#topCard img{
-  height: 600px;
-  position: relative;
-  top: 150px;
-  right: 50px;
+#cocktailTitle{
+  width: 48%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#cocktailTypes{
+  width: 48%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #topCard h1{
-font-size: 60px;
-color: blue;
-position: relative;
-right: 260px;
-}
-#topCard ul{
-  position: relative;
-  right: 270px;
-
+font-size: 280%;
+color: white;
 }
 #topCard li{
   display: inline;
-  color: blue;
+  color: white;
   margin-right: 30px;
-  font-size: 26px;
-  list-style-type: circle;
+  font-size: 160%;
 }
 #botCard{
-  height: 50%;
+
+  margin-top: 5px;
+  height: 49%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+
 }
+#thumbnailCard{
+  width: 46%;
+  display: flex;
+  justify-content: center;
+}
+
+#thumbnailCard img{
+  margin-top: 5%;
+  height: 80%;
+}
+
+#IngridientsInstructionCard{
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
 
 #botCard hr{
   width: 5%;
-  
 }
 
+.longerTitle{
+  font-size: 250%;
+}
+.longerDescription{
+  height: 165vh;
+  margin-top: 15px;
+  padding: 45px;
+}
+
+
+
+/* 
+@media only screen and (min-width: 1440px) {
+  
+} */
+
+
+@media only screen and (max-device-width: 480px) {
+  #singleCard{
+    height: auto;
+  }
+  #topCard h1{
+    font-size: 220%;
+    color: white;
+    }
+  #topCard li{
+    display: none;
+  }
+  #topCard{
+    justify-content: flex-start;
+    align-items: center;
+    height: 400px;
+  }
+  #cocktailTitle{
+    width: 100%;
+  }
+  #botCard{
+
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 15px;
+  }
+  #mobileList {
+    display: flex;
+
+  }
+  #mobileList ul{
+    
+    list-style: none;
+    margin: 20px,0;
+    padding: 0;
+    font-size: 15px;
+    font-weight: bold;
+  }
+  #mobileList li{
+    display: inline-block;
+    margin-right: 5px;
+
+  }
+
+  #thumbnailCard img{
+    margin-top: 5%;
+    height: auto;
+    width: 100%;
+  }
+
+
+}
+@media only screen and (device-width: 768px) {
+  #topCard li{
+    display: block;
+  }
+
+  #IngridientsInstructionCard span{
+    font-size: 12px;
+  }
+  #IngridientsInstructionCard h2{
+    font-size: 20px;
+  }
+
+}
+@media only screen and (min-device-width: 800px) and (max-device-width: 1024px) {
+  #topCard ul{
+    font-size: 16px;
+  }
+
+  #IngridientsInstructionCard span{
+    font-size: 12px;
+  }
+  #IngridientsInstructionCard h2{
+    font-size: 20px;
+  }
+}
+
+/* @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+  #topCard h1{
+    font-size: 250%;
+    }
+  #topCard li{
+    display: block;
+    margin-right: 30px;
+    font-size: 130%;
+  }
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+  #topCard li{
+    display: block;
+  }
+} */
