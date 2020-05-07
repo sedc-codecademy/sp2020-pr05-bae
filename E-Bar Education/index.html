@@ -8,13 +8,32 @@
   </head>
   <body>
     <div>
-      <header></header>
+      <header>
+          <div class="main">
+            <div class="logo">
+              <img src="assets/Images/05aef934-8cc5-412a-a3cf-fdcb676bc827_200x200.png" alt="Logo">
+            </div>
+            <form class="form" onsubmit="return false">
+              <div>
+                <input type="text" class="searchBar" placeholder="Search Cocktails" autocomplete="off" onmousedown="active()" onblur="inactive()">
+                <input type="button" class="searchBtn" value="Search">
+              </div>
+            </form>
+            <ul>
+              <li><a href="#">Quiz</a></li>
+              <li><a href="#">History</a></li>
+            </ul>
+          </div>
+      </header>
     </div>
 
     <div>
       <main>
-        <div class="landing-page"></div>
-        <div class="cocktails-list hide"></div>
+        <div class="landing-page">
+        </div>
+        <div class="cocktails-list hide">
+          <ul class="cocktailsList"></ul>
+        </div>
         <div class="single-cocktail hide"></div>
         <div class="quiz hide"></div>
       </main>
@@ -24,6 +43,7 @@
       <footer></footer>
     </div>
 
+    <script src="assets/search.js"></script>
     <script src="assets/main.js"></script>
   </body>
 </html>

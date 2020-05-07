@@ -1,3 +1,36 @@
 .hide {
   display: none;
 }
+
+.logo img {
+  float: left;
+  width: 150px;
+  height: auto;
+}
+
+.searchBar {
+  border: 1px solid black;
+  margin-top: 50px;
+  font-size: 15px;
+  padding: 6px;
+  outline: none;
+  width: 250px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.searchBtn {
+  color: black;
+  border: 1px solid black;
+  font-size: 15px;
+  padding: 6px;
+  cursor: pointer;
+  outline: none;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.cocktail img {
+  width: 100px;
+}
+
