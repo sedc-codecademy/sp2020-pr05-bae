@@ -3,13 +3,11 @@ const searchBar = document.querySelector('.searchBar');
 const searchBtn = document.querySelector('.searchBtn');
 const divHide = document.querySelector('.hide');
 
-let ginCocktails = [];
-let vodkaCocktails = [];
-let whiskeyCocktails = [];
-let rumCocktails = [];
+let cocktailsByName = [];
+let allCocktails = [];
 
 window.onload = () => {
-    document.querySelector('.searchBar').onkeypress = function searchKeyPressed(e) {
+    document.querySelector('.searchBar').onkeypress = function searchKeyPressed (e) {
        if (e.keyCode == 13) {
            document.querySelector('.searchBtn').click();
        }
@@ -17,80 +15,35 @@ window.onload = () => {
 };
 
 searchBar.addEventListener('keyup', (e) => {
-    // let searchString = e.target.value;
-    // searchString = searchString.charAt(0).toUpperCase() + searchString.slice(1);
-    // divHide.classList.remove('hide');
-    if(e.target.value === '')
-    divHide.classList.add('hide');
-
-    // const filteredGinCocktails = ginCocktails.filter((cocktail) => {
-    //     return cocktail.strDrink.includes(searchString);
-    // });
-    // displayCocktails(filteredGinCocktails);
+    let searchString = e.target.value;
+    if(searchString === '') {
+        divHide.classList.add('hide');
+    }
 });
 
 searchBtn.addEventListener('click', () => {
-    if(searchBar.value === 'gin') {
-        divHide.classList.remove('hide')
-        displayCocktails(ginCocktails)
-    }
-    if(searchBar.value === 'vodka') {
-        divHide.classList.remove('hide')
-        displayCocktails(vodkaCocktails)
-    }
-    if(searchBar.value === 'whiskey') {
-        divHide.classList.remove('hide')
-        displayCocktails(whiskeyCocktails)
-    }
-    if(searchBar.value === 'rum') {
-        divHide.classList.remove('hide')
-        displayCocktails(rumCocktails)
-    }
+    divHide.classList.remove('hide');
+    loadCocktails(searchBar.value);
+    loadCocktailsByName(searchBar.value);
 });
 
-const loadGinCocktails = async () => {
+const loadCocktails = async (input) => {
     try {
-        const res =  await fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Gin');
-        ginCocktails = await res.json();
-        // console.log(ginCocktails);
-        ginCocktails = ginCocktails.drinks;
-        displayCocktails(ginCocktails);
+      const res = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${input}`);
+      allCocktails = await res.json();
+      allCocktails = allCocktails.drinks;
+      displayCocktails(allCocktails);
     } catch (err) {
         console.log(err);
     }
 };
 
-const loadVodkaCocktails = async () => {
+const loadCocktailsByName = async (input) => {
     try {
-        const res =  await fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Vodka');
-        vodkaCocktails = await res.json();
-        // console.log(vodkaCocktails);
-        vodkaCocktails = vodkaCocktails.drinks;
-        displayCocktails(vodkaCocktails);
-    } catch (err) {
-        console.log(err);
-    }
-};
-
-const loadWhiskeyCocktails = async () => {
-    try {
-        const res =  await fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Whiskey');
-        whiskeyCocktails = await res.json();
-        // console.log(whiskeyCocktails);
-        whiskeyCocktails = whiskeyCocktails.drinks;
-        displayCocktails(whiskeyCocktails);
-    } catch (err) {
-        console.log(err);
-    }
-};
-
-const loadRumCocktails = async () => {
-    try {
-        const res =  await fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Rum');
-        rumCocktails = await res.json();
-        // console.log(rumCocktails);
-        rumCocktails = rumCocktails.drinks;
-        displayCocktails(rumCocktails);
+        const res = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${input}`);
+        cocktailsByName = await res.json();
+        cocktailsByName = cocktailsByName.drinks;
+        displayCocktails(cocktailsByName);
     } catch (err) {
         console.log(err);
     }
@@ -125,11 +78,5 @@ function inactive() {
         searchBar.placeholder = 'Search Cocktails'
     }
 };
-
-loadGinCocktails();
-loadVodkaCocktails();
-loadWhiskeyCocktails();
-loadRumCocktails();
-
 
 
