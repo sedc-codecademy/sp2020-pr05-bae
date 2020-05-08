@@ -21,9 +21,10 @@ searchBar.addEventListener('keyup', (e) => {
     }
 });
 
-searchBtn.addEventListener('click', () => {
+searchBtn.addEventListener('click', async () => {
     divHide.classList.remove('hide');
-    loadCocktails(searchBar.value);
+    let success = await loadCocktails(searchBar.value);
+    if(!success)
     loadCocktailsByName(searchBar.value);
 });
 
@@ -34,8 +35,9 @@ const loadCocktails = async (input) => {
       allCocktails = allCocktails.drinks;
       displayCocktails(allCocktails);
     } catch (err) {
-        console.log(err);
+        return false
     }
+    return true
 };
 
 const loadCocktailsByName = async (input) => {
