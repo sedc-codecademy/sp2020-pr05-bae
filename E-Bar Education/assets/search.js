@@ -1,7 +1,7 @@
-const cocktailsList = document.querySelector('.cocktailsList');
+const cocktailsShow = document.querySelector('.cocktailsShow');
 const searchBar = document.querySelector('.searchBar');
 const searchBtn = document.querySelector('.searchBtn');
-const divHide = document.querySelector('.hide');
+const cocktailsList = document.querySelector('.cocktails-list');
 
 let cocktailsByName = [];
 let allCocktails = [];
@@ -17,12 +17,12 @@ window.onload = () => {
 searchBar.addEventListener('keyup', (e) => {
     let searchString = e.target.value;
     if(searchString === '') {
-        divHide.classList.add('hide');
+        cocktailsList.classList.add('hide');
     }
 });
 
 searchBtn.addEventListener('click', async () => {
-    divHide.classList.remove('hide');
+    cocktailsList.classList.remove('hide');
     let success = await loadCocktails(searchBar.value);
     if(!success)
     loadCocktailsByName(searchBar.value);
@@ -60,7 +60,7 @@ const displayCocktails = (cocktails) => {
         </li>
         `;
     });
-    cocktailsList.innerHTML = cocktailString; //To be done
+    cocktailsShow.innerHTML = cocktailString; //To be done
 };
 
 function active() {
